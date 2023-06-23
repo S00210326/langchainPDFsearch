@@ -1,8 +1,6 @@
 import os
 import sys
 
-import constants
-
 
 import openai
 from langchain.chains import RetrievalQA
@@ -12,9 +10,14 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.indexes import VectorstoreIndexCreator
 from langchain.llms import OpenAI
 from langchain.vectorstores import Chroma, DocArrayInMemorySearch
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# now you can access your environment variables like this:
 
 
-os.environ["OPENAI_API_KEY"] = constants.APIKEY
+openai_api_key = os.getenv("OPENAI_API_KEY")
 
 
 file = "Filmography.docx"
